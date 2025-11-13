@@ -34,14 +34,14 @@
 
 JSON Crack is a tool for visualizing JSON data in a structured, interactive graphs, making it easier to explore, format, and validate JSON. It offers features like converting JSON to other formats (CSV, YAML), generating JSON Schema, executing queries, and exporting visualizations as images. Designed for both readability and usability.
 
-* **Visualizer**: Instantly convert JSON, YAML, CSV, XML, and TOML into interactive graphs or trees in dark or light mode.
-* **Convert**: Seamlessly transform data formats, like JSON to CSV or XML to JSON, for easy sharing.
-* **Format & Validate**: Beautify and validate JSON, YAML, and CSV for clear and accurate data.
-* **Code Generation**: Generate TypeScript interfaces, Golang structs, and JSON Schema.
-* **JSON Schema**: Create JSON Schema, mock data, and validate various data formats.
-* **Advanced Tools**: Decode JWT, randomize data, and run jq or JSON path queries.
-* **Export Image**: Download your visualization as PNG, JPEG, or SVG.
-* **Privacy**: All data processing is local; nothing is stored on our servers.
+- **Visualizer**: Instantly convert JSON, YAML, CSV, XML, and TOML into interactive graphs or trees in dark or light mode.
+- **Convert**: Seamlessly transform data formats, like JSON to CSV or XML to JSON, for easy sharing.
+- **Format & Validate**: Beautify and validate JSON, YAML, and CSV for clear and accurate data.
+- **Code Generation**: Generate TypeScript interfaces, Golang structs, and JSON Schema.
+- **JSON Schema**: Create JSON Schema, mock data, and validate various data formats.
+- **Advanced Tools**: Decode JWT, randomize data, and run jq or JSON path queries.
+- **Export Image**: Download your visualization as PNG, JPEG, or SVG.
+- **Privacy**: All data processing is local; nothing is stored on our servers.
 
 ## Recognition
 
@@ -80,7 +80,6 @@ Here is what you need to be able to run JSON Crack.
 
 - Node.js (Version: >=18.x)
 - Pnpm _(recommended)_
-
 
 ## Development
 
