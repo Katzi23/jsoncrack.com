@@ -1,5 +1,4 @@
 import debounce from "lodash.debounce";
-import { event as gaEvent } from "nextjs-google-analytics";
 import { toast } from "react-hot-toast";
 import { create } from "zustand";
 import exampleJson from "../data/example.json";
@@ -71,17 +70,15 @@ const debouncedUpdateJson = debounce((value: unknown) => {
 }, 400);
 
 const useFile = create<FileStates & JsonActions>()((set, get) => ({
+  setFile: fileData => {
+    set({ fileData });
+  },
   ...initialStates,
   clear: () => {
     set({ contents: "" });
     useJson.getState().clear();
   },
   setJsonSchema: jsonSchema => set({ jsonSchema }),
-  setFile: fileData => {
-    set({ fileData, format: fileData.format || FileFormat.JSON });
-    get().setContents({ contents: fileData.content, hasChanges: false });
-    gaEvent("set_content", { label: fileData.format });
-  },
   getContents: () => get().contents,
   getFormat: () => get().format,
   getHasChanges: () => get().hasChanges,
@@ -142,17 +139,14 @@ const useFile = create<FileStates & JsonActions>()((set, get) => ({
       toast.error("Failed to fetch document from URL!");
     }
   },
-  checkEditorSession: (url, widget) => {
+  checkEditorSession: url => {
     if (url && typeof url === "string" && isURL(url)) {
       return get().fetchUrl(url);
     }
 
-    let contents = defaultJson;
-    const sessionContent = sessionStorage.getItem("content") as string | null;
-    const format = sessionStorage.getItem("format") as FileFormat | null;
-    if (sessionContent && !widget) contents = sessionContent;
-
-    if (format) set({ format });
+    // Always load from example.json, ignore session storage
+    const contents = defaultJson;
+    set({ format: FileFormat.JSON });
     get().setContents({ contents, hasChanges: false });
   },
 }));
